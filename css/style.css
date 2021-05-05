@@ -1,3 +1,6 @@
+/* ==================================================================================
+// BASE
+==================================================================================*/
 *,
 *::before,
 *::after {
@@ -12,4 +15,42 @@ html {
 
 body {
   box-sizing: border-box;
+}
+
+/* ==================================================================================
+// LAYOUT
+==================================================================================*/
+
+.cards {
+  padding: 6rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 3rem;
+}
+
+.card {
+  padding: 4rem;
+  font-size: 2rem;
+  color: white;
+  background-color: brown;
+  border-radius: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==================================================================================
+// TYPOGRAPHY
+==================================================================================*/
+h1 {
+  margin-top: 2rem;
+  text-align: center;
 }
