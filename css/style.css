@@ -24,12 +24,14 @@ body {
 .cards {
   padding: 6rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 15%);
+  grid-template-rows: repeat(4, 15rem);
   grid-gap: 3rem;
+  align-content: center;
+  justify-content: center;
 }
 
-.card {
+/* .card {
   padding: 4rem;
   font-size: 2rem;
   color: white;
@@ -38,7 +40,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .buttons {
   padding: 2rem;
@@ -53,4 +55,56 @@ body {
 h1 {
   margin-top: 2rem;
   text-align: center;
+}
+
+/* ==================================================================================
+// ANIMATIONS FOR CARDS
+==================================================================================*/
+/* FLIP CARD CONTAINER */
+.card {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+}
+
+/* This container positions the front and back side */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 2s;
+  transform-style: preserve-3d;
+  
+  
+}
+
+/* Flips container horizontally */
+.card-hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Positions the front and the back side */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .5rem;
+}
+
+.card-front {
+  background-color: brown;
+  color: white;
+}
+
+/* Styling the back side */
+.card-back {
+  background-color:brown;
+  color: white;
+  transform: rotateY(180deg);
 }
