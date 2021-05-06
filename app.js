@@ -2,9 +2,11 @@
 let cards = document.querySelectorAll('.card')
 
 for(let i = 0; i < cards.length; i++) {
-  let card = cards[i]
-  cards.addEventListener('click', (e) => {
-    card.classList.toggle('card-hover')
+  cards[i].addEventListener('click', (e) => {
+    cards[i].classList.toggle('card-hover')
   })
 }
 
+// cards.addEventListener('click', (e) => {
+//   cards.classList.toggle('card-hover')
+// })
