@@ -6,17 +6,87 @@ let cardFront = document.querySelector('.card-front')
 //   console.log(cardFront[i])
 // }
 
-for(let i = 0; i < cards.length; i++) {
-  cards[i].addEventListener('click', (e) => {
-    let cardHover = cards[i].classList.toggle('card-hover')
-    //let value = 0 
+let value = 0
 
-    console.log(cardHover)
-    if (cardHover === true) {
-      console.log('Card has been hovered')
-    } 
+addValue = () => {
+  value++
+  console.log(value)
+}
+
+subtractValue = () => {
+  value--
+  console.log(value)
+}
+
+let canHover = true 
+
+// Loops through all of the cards
+for (let i = 0; i < cards.length; i++) {
+
+  cards[i].addEventListener('click', (e) => {
+    let cardHover = true 
+    // When you click on a card the .card-hover class needs to be turned on or off 
+    if (cardHover === true && value === 0) {
+      cards[i].classList.add('card-hover')
+      addValue()
+    } else if (cardHover === true && value === 1) {
+      cards[i].classList.add('card-hover')
+      addValue()
+    }
+
+    // If the value of the card is greater than or equal to 2, you can not turn that card over 
   })
 }
+
+// let alreadyHovered = false
+
+// alreadyHoveredFunc = () => {
+//   alreadyHovered = true
+//   console.log(`This card has been turned`)
+// }
+
+// hasntBeenHoveredFunc = () => {
+//   alreadyHovered = false
+//   console.log(`This card has NOT been turned yet`)
+// }
+
+// hoverCard = () => {
+//   card.classList.toggle('.card-hover')
+// }
+
+// for (let i = 0; i < cards.length; i++) {
+//   cards[i].addEventListener('click', hoverCard())
+// }
+
+
+// for(let i = 0; i < cards.length; i++) {
+//   cards[i].addEventListener('click', (e) => {
+//     // let cardHover = cards[i].classList.toggle('card-hover') 
+
+//     let cardHover = true
+
+//     //console.log(cardHover)
+//     if (cardHover === true) {
+
+//       if (value === 0) {
+//         cards[i].classList.add('card-hover')
+//         addValue()          
+//       } 
+//       // else if (value === 1){
+//       //   addValue()
+//       //   // console.log('Sorry you can only hover two cards at a time')
+//       //   cards[i].classList.add('card-hover') 
+//       // } else {
+//       //   console.log(`Can't hover`)
+//       // }
+//     } 
+//     // else if (cardHover === false) {
+//     //   console.log('Card has been turned around')
+//     //   subtractValue()
+//     //   // return cardHover
+//     // } 
+//   })
+// }
 
 // cards.addEventListener('click', (e) => {
 //   cards.classList.toggle('card-hover')
