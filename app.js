@@ -18,7 +18,19 @@ subtractValue = () => {
   console.log(value)
 }
 
-let canHover = true 
+// let canHover = true 
+
+// canHoverTrue = () => {
+//   canHover = true
+// }
+
+// canHoverFalse = () => {
+//   canHover = false
+// }
+
+// cardHoveredFunc = () => {
+  
+// }
 
 // Loops through all of the cards
 for (let i = 0; i < cards.length; i++) {
@@ -29,9 +41,14 @@ for (let i = 0; i < cards.length; i++) {
     if (cardHover === true && value === 0) {
       cards[i].classList.add('card-hover')
       addValue()
-    } else if (cardHover === true && value === 1) {
+    } else if (cardHover === false && value === 1) {
       cards[i].classList.add('card-hover')
       addValue()
+    } else if (cardHover === true && value >= 2) {
+      console.log(`You can only hover two cards at a time`)
+      cardHover = false
+    } else {
+      cards[i].classList.remove('card-hover')
     }
 
     // If the value of the card is greater than or equal to 2, you can not turn that card over 
