@@ -1,8 +1,22 @@
-1. Need to be able to only flip two cards at a time 
-  - If one of the cards is selected, then you can select one more
-  - If two cards are selected, then you can't select any more cards
-2. Need to be able to see if the content on the card matches
+✅ Need to be able to only flip two cards at a time 
+  ✅ If one of the cards is selected, then you can select one more
+  ✅ If two cards are selected, then you can't select any more cards
+ ✅ GO BACK AND FIX BUG WHERE YOU CAN SELECT MORE THAN ONE CARD AT A TIME 
+  ✅ Current issue: you can select the same card twice 
 
-
-3. GO BACK AND FIX BUG WHERE YOU CAN SELECT MORE THAN ONE CARD AT A TIME 
-  - Current issue: you can select the same card twice 
+  MVP WORK
+  1. Need to be able to see if the content on the card matches
+  2. Random array is added to the cards 
+  3. Add in Trivia question functionality 
+    - Need to be able to see the back of the cards when the trivia question is answered correctly 
+  4. Need to be able to see the back of the cards when the game is first loaded 
+  5. Let the player know when they have won the game 
+  6. Let the player know how many matches they have gotten correct and how many matches they have left
+  
+  STRETCH GOALS 
+  1. Allow players to select the amount of cards they want to be able to play with 
+  2. Timer 
+    - Timer Stretch
+      - Allow player to answer a trivia question to add more time, if they get it right they get more time, if they get it wrong, they lose time 
+  3. Choose different levels of difficulty 
+    - This will be associated with how many cards and time 

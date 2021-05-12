@@ -1,161 +1,127 @@
 // BRING IN CARD 1
 let cards = document.querySelectorAll('.card')
-let cardFront = document.querySelector('.card-front')
+let cardFront = document.querySelectorAll('.card-front')
+let cardBack = document.querySelectorAll('.card-back')
 
-// for (let i = 0; i < cardFront.length; i++) {
-//   console.log(cardFront[i])
-// }
-
+//==========================================================================================================
+//==========================================================================================================
+// VALUE CODE
+// This code will add or subtract a value to let the browser know that if the value is greater than or equal to 2, no more cards can be flipped
+//==========================================================================================================
+//==========================================================================================================
+// Value variable 
 let value = 0
 
+// Adds value
 addValue = () => {
   value++
   console.log(value)
 }
 
+// Subtracts value
+// ** This code may not be necesarry since, you can only flip two cards and can't turn them around again until you have guessed two cards **
 subtractValue = () => {
   value--
   console.log(value)
 }
 
-// let canHover = true 
-
-// canHoverTrue = () => {
-//   canHover = true
+// Example Function to show how to log i
+// functionFoo = (temp) => {
+//   console.log(temp)
 // }
 
-// canHoverFalse = () => {
-//   canHover = false
-// }
+//==========================================================================================================
+//==========================================================================================================
+// Compares the content in the cards - or runs through the cardBack divs for their innerText, so they can be compared in the cardHandler Func
+//==========================================================================================================
+//==========================================================================================================
+cardBackFunc = (k) => {
+  for (let k = 0; k < cardBack.length; k++) {
+    // console.log(`This is ${k}`)
+    //console.log(cardBack[k].innerHTML)
+    let cardInner = cardBack[k]
+    console.log(cardInner[k].innerText)
+    //console.log(cardInner[k])
+  } 
+} 
 
-// cardHoveredFunc = () => {
-  
-// }
 
-// Loops through all of the cards
-// for (let i = 0; i < cards.length; i++) {
-
-//   cards[i].addEventListener('click', (e) => {
-//     let cardHover = true 
-//     // When you click on a card the .card-hover class needs to be turned on or off 
-//     if (cardHover === true && value === 0) {
-//       cards[i].classList.add('card-hover')
-//       addValue()
-//     } else if (cardHover === false && value === 1) {
-//       cards[i].classList.add('card-hover')
-//       addValue()
-//     } else if (cardHover === true && value >= 2) {
-//       console.log(`You can only hover two cards at a time`)
-//       cardHover = false
-//     } else {
-//       cards[i].classList.remove('card-hover')
-//     }
-
-//     // If the value of the card is greater than or equal to 2, you can not turn that card over 
-//   })
-// }
-
-// let alreadyHovered = false
-
-// alreadyHoveredFunc = () => {
-//   alreadyHovered = true
-//   console.log(`This card has been turned`)
-// }
-
-// hasntBeenHoveredFunc = () => {
-//   alreadyHovered = false
-//   console.log(`This card has NOT been turned yet`)
-// }
-
-// hoverCard = () => {
-//   card.classList.toggle('.card-hover')
-// }
-
-// for (let i = 0; i < cards.length; i++) {
-//   cards[i].addEventListener('click', hoverCard())
-// }
-
-functionFoo = (temp) => {
-  console.log(temp)
-}
-
+// Empty array for the cardHandler Func to be able to push the index of the card that was selected
 let cardArr = []
 
+//==========================================================================================================
+//==========================================================================================================
+// The function that goes on the event listener for the cards
+//==========================================================================================================
+//==========================================================================================================
+
 cardHandler = (i) => {
-      // let cardHover = cards[i].classList.toggle('card-hover') 
-      // console.log(i)
   
+      // Variable to tell the browser if a card is allowed to flip over 
       let cardHover = true 
 
-      //console.log(cardHover)
+      // Checks the cardHover
       if (cardHover === true) {
   
-        
+        // Checks the value
         if (value === 0) {
           cards[i].classList.add('card-hover')
           addValue()
+          // Pushes the index of the card onto the array
           cardArr.push(i)
           console.log(cardArr)
+          //cardBackFunc()
 
-          for (let j = 0; j < cardArr.length; j++) {
-            console.log(`This is j of CardArr: ${cardArr[j]}`)
-            console.log(`This is i: ${i}`)
-          }
-        } 
-        else if (value === 1){
+          // for (let j = 0; j < cardArr.length; j++) {
+          //   console.log(`This is j of CardArr: ${cardArr[j]}`)
+          //   console.log(`This is i: ${i}`)
+          // }
+        } else if (value === 1){
           for (let j = 0; j < cardArr.length; j++) {
             if (cardArr[j] === i) {
-              console.log(`You cannot hover this card because it has already been hovered`)
+              console.log(`You cannot hover this card because it has already been hovered or you just hovered it`)
             } else {
-             
-              
               cards[i].classList.add('card-hover') 
+              // Pushes the index of the card onto the array
               cardArr.push(i)
               console.log(cardArr)
               addValue()
             }
-            // console.log(`This is j of CardArr: ${cardArr[j]}`)
-            // console.log(`This is i: ${i}`)
           }
         } else {
-          console.log(`Can't hover`)
+          console.log(`You can only hover two cards at a time`)
         }
-      } 
-      // else if (cardHover === false) {
-      //   console.log('Card has been turned around')
-      //   subtractValue()
-      //   // return cardHover
-      // } 
+      }  
   }
 
-
-
+//==========================================================================================================
+//==========================================================================================================
+// Event Listener for the cards
+//==========================================================================================================
+//==========================================================================================================
 for(let i = 0; i < cards.length; i++) {
   cards[i].addEventListener('click', () => cardHandler(i))
 }
-//   
 
-// cards.addEventListener('click', (e) => {
-//   cards.classList.toggle('card-hover')
-// })
-
-//============================================
-// POP UP
-//============================================
-// let triviaPopup = document.querySelector('#triviaPopup')
-// let closePopupBtn = document.querySelector('#close')
-// let btnHint = document.querySelector('.btnHint')
+//==========================================================================================================
+//==========================================================================================================
+// Popup Functionality 
+//==========================================================================================================
+//==========================================================================================================
+let triviaPopup = document.querySelector('#triviaPopup')
+let closePopupBtn = document.querySelector('#close')
+let btnHint = document.querySelector('.btnHint')
 
 
-// // Adds or removes the class list of .none 
-// openModal = (e) => {
-//   triviaPopup.classList.remove('none')
-// }
+// Adds or removes the class list of .none 
+openModal = (e) => {
+  triviaPopup.classList.remove('none')
+}
 
-// closeModal = (e) => {
-//   triviaPopup.classList.add('none')
-// }
+closeModal = (e) => {
+  triviaPopup.classList.add('none')
+}
 
-// closePopupBtn.addEventListener('click', closeModal)
+closePopupBtn.addEventListener('click', closeModal)
 
-// btnHint.addEventListener('click', openModal)
+btnHint.addEventListener('click', openModal)
