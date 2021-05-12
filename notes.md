@@ -12,6 +12,7 @@
   4. Need to be able to see the back of the cards when the game is first loaded 
   5. Let the player know when they have won the game 
   6. Let the player know how many matches they have gotten correct and how many matches they have left
+  7. Bring in styling and Rick and Morty API
   
   STRETCH GOALS 
   1. Allow players to select the amount of cards they want to be able to play with 
@@ -20,3 +21,4 @@
       - Allow player to answer a trivia question to add more time, if they get it right they get more time, if they get it wrong, they lose time 
   3. Choose different levels of difficulty 
     - This will be associated with how many cards and time 
+  4. If the user gets three trivia questions correct they get a match
