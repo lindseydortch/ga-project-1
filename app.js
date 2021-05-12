@@ -55,18 +55,32 @@ showCards = (i) => {
 //==========================================================================================================
 cardBackFunc = (k) => {
     console.log(`This is from the cardBackFunc: ${cardBack[k].innerText}`)
+    return cardBack[k].innerText
 } 
+
+// Empty array for the cardHandler Func to be able to push the index of the card that was selected
+let cardArr = []
+let matchArr = []
 
 //==========================================================================================================
 //==========================================================================================================
 // Match Function
 //==========================================================================================================
 //==========================================================================================================
-
-
-
-// Empty array for the cardHandler Func to be able to push the index of the card that was selected
-let cardArr = []
+cardBackMatchFunc = (i) => {
+  if (matchArr[0].firstElementChild.children[1].innerText === matchArr[1].firstElementChild.children[1].innerText) {
+    console.log(`Yay you got a match`)
+    value = 0
+    setTimeout(() => {
+      matchArr[0].classList.add('vis-hidden')
+      matchArr[1].classList.add('vis-hidden')
+    }, 3000)
+    clearTimeout()
+  } else {
+    console.log(`Sorry not a match`)
+    cards[i].classList.remove('card-hover')
+  }
+}
 
 //==========================================================================================================
 //==========================================================================================================
@@ -86,15 +100,15 @@ cardHandler = (i, k) => {
         if (value === 0) {
           cards[i].classList.add('card-hover')
           addValue()
+          // console.log(cards[i])
           // Pushes the index of the card onto the array
           cardArr.push(i)
-          console.log(cardArr)
-          cardBackFunc(k)
+          console.log(`This is the card array: ${cardArr}`)
+          // Pushes the text of the back of the card to the array
+          cardBackFunc(i)
+          matchArr.push(cards[i])
+          console.log(`This is the match array: ${matchArr}`)
 
-          // for (let j = 0; j < cardArr.length; j++) {
-          //   console.log(`This is j of CardArr: ${cardArr[j]}`)
-          //   console.log(`This is i: ${i}`)
-          // }
         } else if (value === 1){
           
           for (let j = 0; j < cardArr.length; j++) {
@@ -105,9 +119,13 @@ cardHandler = (i, k) => {
               // Pushes the index of the card onto the array
               cardArr.push(i)
               console.log(cardArr)
-              cardBackFunc(k)
               addValue()
-              
+              // Pushes the text of the back of the card to the array
+              cardBackFunc(i)
+              matchArr.push(cards[i])
+              console.log(`This is the match array: ${matchArr}`)
+              // Sees if the cards are a match
+              cardBackMatchFunc(i)
             }
           }
         } else {
@@ -124,7 +142,7 @@ cardHandler = (i, k) => {
 for(let i = 0, k = 0; i < cards.length, k < cardBack.length; i++, k++) {
   // showCards(i)
   // clearTimeout()
-  cards[i].addEventListener('click', () => cardHandler(i, k))
+  cards[i].addEventListener('click', () => cardHandler(i))
 }
 
 //==========================================================================================================
