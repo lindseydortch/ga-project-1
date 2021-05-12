@@ -33,27 +33,27 @@ subtractValue = () => {
 // }
 
 // Loops through all of the cards
-for (let i = 0; i < cards.length; i++) {
+// for (let i = 0; i < cards.length; i++) {
 
-  cards[i].addEventListener('click', (e) => {
-    let cardHover = true 
-    // When you click on a card the .card-hover class needs to be turned on or off 
-    if (cardHover === true && value === 0) {
-      cards[i].classList.add('card-hover')
-      addValue()
-    } else if (cardHover === false && value === 1) {
-      cards[i].classList.add('card-hover')
-      addValue()
-    } else if (cardHover === true && value >= 2) {
-      console.log(`You can only hover two cards at a time`)
-      cardHover = false
-    } else {
-      cards[i].classList.remove('card-hover')
-    }
+//   cards[i].addEventListener('click', (e) => {
+//     let cardHover = true 
+//     // When you click on a card the .card-hover class needs to be turned on or off 
+//     if (cardHover === true && value === 0) {
+//       cards[i].classList.add('card-hover')
+//       addValue()
+//     } else if (cardHover === false && value === 1) {
+//       cards[i].classList.add('card-hover')
+//       addValue()
+//     } else if (cardHover === true && value >= 2) {
+//       console.log(`You can only hover two cards at a time`)
+//       cardHover = false
+//     } else {
+//       cards[i].classList.remove('card-hover')
+//     }
 
-    // If the value of the card is greater than or equal to 2, you can not turn that card over 
-  })
-}
+//     // If the value of the card is greater than or equal to 2, you can not turn that card over 
+//   })
+// }
 
 // let alreadyHovered = false
 
@@ -89,13 +89,13 @@ for (let i = 0; i < cards.length; i++) {
 //         cards[i].classList.add('card-hover')
 //         addValue()          
 //       } 
-//       // else if (value === 1){
-//       //   addValue()
-//       //   // console.log('Sorry you can only hover two cards at a time')
-//       //   cards[i].classList.add('card-hover') 
-//       // } else {
-//       //   console.log(`Can't hover`)
-//       // }
+//       else if (value === 1){
+//         addValue()
+//         // console.log('Sorry you can only hover two cards at a time')
+//         cards[i].classList.add('card-hover') 
+//       } else {
+//         console.log(`Can't hover`)
+//       }
 //     } 
 //     // else if (cardHover === false) {
 //     //   console.log('Card has been turned around')
@@ -108,3 +108,24 @@ for (let i = 0; i < cards.length; i++) {
 // cards.addEventListener('click', (e) => {
 //   cards.classList.toggle('card-hover')
 // })
+
+//============================================
+// POP UP
+//============================================
+let triviaPopup = document.querySelector('#triviaPopup')
+let closePopupBtn = document.querySelector('#close')
+let btnHint = document.querySelector('.btnHint')
+
+
+// Adds or removes the class list of .none 
+openModal = (e) => {
+  triviaPopup.classList.remove('none')
+}
+
+closeModal = (e) => {
+  triviaPopup.classList.add('none')
+}
+
+closePopupBtn.addEventListener('click', closeModal)
+
+btnHint.addEventListener('click', openModal)
