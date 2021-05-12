@@ -79,23 +79,44 @@ functionFoo = (temp) => {
   console.log(temp)
 }
 
+let cardArr = []
+
 cardHandler = (i) => {
       // let cardHover = cards[i].classList.toggle('card-hover') 
       // console.log(i)
   
-      let cardHover = true
-  
+      let cardHover = true 
+
       //console.log(cardHover)
       if (cardHover === true) {
   
+        
         if (value === 0) {
           cards[i].classList.add('card-hover')
-          addValue()          
+          addValue()
+          cardArr.push(i)
+          console.log(cardArr)
+
+          for (let j = 0; j < cardArr.length; j++) {
+            console.log(`This is j of CardArr: ${cardArr[j]}`)
+            console.log(`This is i: ${i}`)
+          }
         } 
         else if (value === 1){
-          addValue()
-          // console.log('Sorry you can only hover two cards at a time')
-          cards[i].classList.add('card-hover') 
+          for (let j = 0; j < cardArr.length; j++) {
+            if (cardArr[j] === i) {
+              console.log(`You cannot hover this card because it has already been hovered`)
+            } else {
+             
+              
+              cards[i].classList.add('card-hover') 
+              cardArr.push(i)
+              console.log(cardArr)
+              addValue()
+            }
+            // console.log(`This is j of CardArr: ${cardArr[j]}`)
+            // console.log(`This is i: ${i}`)
+          }
         } else {
           console.log(`Can't hover`)
         }
