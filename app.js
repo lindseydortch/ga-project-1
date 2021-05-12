@@ -54,14 +54,15 @@ showCards = (i) => {
 //==========================================================================================================
 //==========================================================================================================
 cardBackFunc = (k) => {
-  for (let k = 0; k < cardBack.length; k++) {
-    // console.log(`This is ${k}`)
-    //console.log(cardBack[k].innerHTML)
-    let cardInner = cardBack[k]
-    console.log(cardInner[k].innerText)
-    //console.log(cardInner[k])
-  } 
+    console.log(`This is from the cardBackFunc: ${cardBack[k].innerText}`)
 } 
+
+//==========================================================================================================
+//==========================================================================================================
+// Match Function
+//==========================================================================================================
+//==========================================================================================================
+
 
 
 // Empty array for the cardHandler Func to be able to push the index of the card that was selected
@@ -88,13 +89,14 @@ cardHandler = (i, k) => {
           // Pushes the index of the card onto the array
           cardArr.push(i)
           console.log(cardArr)
-          //cardBackFunc()
+          cardBackFunc(k)
 
           // for (let j = 0; j < cardArr.length; j++) {
           //   console.log(`This is j of CardArr: ${cardArr[j]}`)
           //   console.log(`This is i: ${i}`)
           // }
         } else if (value === 1){
+          
           for (let j = 0; j < cardArr.length; j++) {
             if (cardArr[j] === i) {
               console.log(`You cannot hover this card because it has already been hovered or you just hovered it`)
@@ -103,7 +105,9 @@ cardHandler = (i, k) => {
               // Pushes the index of the card onto the array
               cardArr.push(i)
               console.log(cardArr)
+              cardBackFunc(k)
               addValue()
+              
             }
           }
         } else {
@@ -117,9 +121,10 @@ cardHandler = (i, k) => {
 // Event Listener for the cards
 //==========================================================================================================
 //==========================================================================================================
-for(let i = 0; i < cards.length; i++) {
-  showCards(i)
-  cards[i].addEventListener('click', () => cardHandler(i))
+for(let i = 0, k = 0; i < cards.length, k < cardBack.length; i++, k++) {
+  // showCards(i)
+  // clearTimeout()
+  cards[i].addEventListener('click', () => cardHandler(i, k))
 }
 
 //==========================================================================================================
