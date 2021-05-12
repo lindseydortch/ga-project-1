@@ -67,13 +67,17 @@ let matchArr = []
 // Match Function
 //==========================================================================================================
 //==========================================================================================================
-cardBackMatchFunc = (i) => {
+cardBackMatchFunc = (e, i) => {
+  console.log(`This is ${e}`)
   if (matchArr[0].firstElementChild.children[1].innerText === matchArr[1].firstElementChild.children[1].innerText) {
     console.log(`Yay you got a match`)
     value = 0
     setTimeout(() => {
-      matchArr[0].classList.add('vis-hidden')
-      matchArr[1].classList.add('vis-hidden')
+      matchArr.map(card => {
+        return card.classList.add('vis-hidden')
+      })
+      // matchArr[0].classList.add('vis-hidden')
+      // matchArr[1].classList.add('vis-hidden')
     }, 3000)
     clearTimeout()
   } else {

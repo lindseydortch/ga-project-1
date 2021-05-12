@@ -5,7 +5,7 @@
   ✅ Current issue: you can select the same card twice 
 
   MVP WORK
-  1. Need to be able to see if the content on the card matches
+   ✅ Need to be able to see if the content on the card matches
   2. Random array is added to the cards 
   3. Add in Trivia question functionality 
     - Need to be able to see the back of the cards when the trivia question is answered correctly 
