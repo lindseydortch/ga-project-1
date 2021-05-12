@@ -75,35 +75,44 @@ subtractValue = () => {
 //   cards[i].addEventListener('click', hoverCard())
 // }
 
+functionFoo = (temp) => {
+  console.log(temp)
+}
 
-// for(let i = 0; i < cards.length; i++) {
-//   cards[i].addEventListener('click', (e) => {
-//     // let cardHover = cards[i].classList.toggle('card-hover') 
+cardHandler = (i) => {
+      // let cardHover = cards[i].classList.toggle('card-hover') 
+      // console.log(i)
+  
+      let cardHover = true
+  
+      //console.log(cardHover)
+      if (cardHover === true) {
+  
+        if (value === 0) {
+          cards[i].classList.add('card-hover')
+          addValue()          
+        } 
+        else if (value === 1){
+          addValue()
+          // console.log('Sorry you can only hover two cards at a time')
+          cards[i].classList.add('card-hover') 
+        } else {
+          console.log(`Can't hover`)
+        }
+      } 
+      // else if (cardHover === false) {
+      //   console.log('Card has been turned around')
+      //   subtractValue()
+      //   // return cardHover
+      // } 
+  }
 
-//     let cardHover = true
 
-//     //console.log(cardHover)
-//     if (cardHover === true) {
 
-//       if (value === 0) {
-//         cards[i].classList.add('card-hover')
-//         addValue()          
-//       } 
-//       else if (value === 1){
-//         addValue()
-//         // console.log('Sorry you can only hover two cards at a time')
-//         cards[i].classList.add('card-hover') 
-//       } else {
-//         console.log(`Can't hover`)
-//       }
-//     } 
-//     // else if (cardHover === false) {
-//     //   console.log('Card has been turned around')
-//     //   subtractValue()
-//     //   // return cardHover
-//     // } 
-//   })
-// }
+for(let i = 0; i < cards.length; i++) {
+  cards[i].addEventListener('click', () => cardHandler(i))
+}
+//   
 
 // cards.addEventListener('click', (e) => {
 //   cards.classList.toggle('card-hover')
@@ -112,20 +121,20 @@ subtractValue = () => {
 //============================================
 // POP UP
 //============================================
-let triviaPopup = document.querySelector('#triviaPopup')
-let closePopupBtn = document.querySelector('#close')
-let btnHint = document.querySelector('.btnHint')
+// let triviaPopup = document.querySelector('#triviaPopup')
+// let closePopupBtn = document.querySelector('#close')
+// let btnHint = document.querySelector('.btnHint')
 
 
-// Adds or removes the class list of .none 
-openModal = (e) => {
-  triviaPopup.classList.remove('none')
-}
+// // Adds or removes the class list of .none 
+// openModal = (e) => {
+//   triviaPopup.classList.remove('none')
+// }
 
-closeModal = (e) => {
-  triviaPopup.classList.add('none')
-}
+// closeModal = (e) => {
+//   triviaPopup.classList.add('none')
+// }
 
-closePopupBtn.addEventListener('click', closeModal)
+// closePopupBtn.addEventListener('click', closeModal)
 
-btnHint.addEventListener('click', openModal)
+// btnHint.addEventListener('click', openModal)
