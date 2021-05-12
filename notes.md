@@ -22,3 +22,4 @@
   3. Choose different levels of difficulty 
     - This will be associated with how many cards and time 
   4. If the user gets three trivia questions correct they get a match
+  5. Be able to reset game or start a new game when they have won
