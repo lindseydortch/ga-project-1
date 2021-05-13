@@ -207,12 +207,12 @@ let answers = document.querySelectorAll('input')
 
 // console.log(answer1)
 // console.log(answer2.name)
-console.log(answer1.checked)
+//console.log(answer1.checked)
 
 let triviaQuestions = [
   {
     question: 'Is Monitor Lord still alive?',
-    correctAnswer: true,
+    correctAnswer: 'false',
   }
 ]
 
@@ -222,34 +222,24 @@ checkAnswer = (e) => {
   //console.log(accessQuestion)
   // console.log('Checking')
   e.preventDefault()
+  // console.log(answer1.checked)
   console.log('SUBMITTED')
   if (answer1.checked == true) {
+    //console.log('answer has been checked')
+    console.log('This is not the correct answer')
     if (accessQuestion == answer1.name) {
       console.log('you got it right')
     }
+  } else if (answer2.checked == true){
+    console.log('This is not the correct answer')
+    if (accessQuestion == answer2.name) {
+      console.log('you got it right')
+    }
   } else {
-    console.log('Answer has not been checked')
+    console.log('You didnt make a selection')
   }
-
-  // if (accessQuestion == answer1.checked) {
-  //   console.log(`Answer 1 has been selected and is correct: ${answer1.checked}`)
-  // } else if (accessQuestion == answer2.checked){
-  //   console.log(`Answer 2 has been selected and is correct: ${answer2.checked}`)
-  // } else {
-  //   console.log('Wrong answer')
-  // }
-  
-
-
-  // if (accessQuestion == answer1.name) {
-  //   console.log('same name: true')
-  // } else if (accessQuestion == answer2.name) {
-  //   console.log('same name: false')
-  // } else {
-  //   'Wrong answer'
-  // }
 }
-//checkAnswer()
+
 
 triviaForm.addEventListener('submit', checkAnswer)
 
