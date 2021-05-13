@@ -193,3 +193,63 @@ closeModal = (e) => {
 closePopupBtn.addEventListener('click', closeModal)
 
 btnHint.addEventListener('click', openModal)
+
+//==========================================================================================================
+//==========================================================================================================
+// TRIVIA PORTION
+//==========================================================================================================
+//==========================================================================================================
+let triviaForm = document.querySelector('.trivia')
+let answer1 = document.querySelector('#a1')
+let answer2 = document.querySelector('#a2')
+let submitAnswer = document.querySelector('.submit')
+let answers = document.querySelectorAll('input')
+
+// console.log(answer1)
+// console.log(answer2.name)
+console.log(answer1.checked)
+
+let triviaQuestions = [
+  {
+    question: 'Is Monitor Lord still alive?',
+    correctAnswer: true,
+  }
+]
+
+let accessQuestion = triviaQuestions[0].correctAnswer
+
+checkAnswer = (e) => {
+  //console.log(accessQuestion)
+  // console.log('Checking')
+  e.preventDefault()
+  console.log('SUBMITTED')
+  if (answer1.checked == true) {
+    if (accessQuestion == answer1.name) {
+      console.log('you got it right')
+    }
+  } else {
+    console.log('Answer has not been checked')
+  }
+
+  // if (accessQuestion == answer1.checked) {
+  //   console.log(`Answer 1 has been selected and is correct: ${answer1.checked}`)
+  // } else if (accessQuestion == answer2.checked){
+  //   console.log(`Answer 2 has been selected and is correct: ${answer2.checked}`)
+  // } else {
+  //   console.log('Wrong answer')
+  // }
+  
+
+
+  // if (accessQuestion == answer1.name) {
+  //   console.log('same name: true')
+  // } else if (accessQuestion == answer2.name) {
+  //   console.log('same name: false')
+  // } else {
+  //   'Wrong answer'
+  // }
+}
+//checkAnswer()
+
+triviaForm.addEventListener('submit', checkAnswer)
+
