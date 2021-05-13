@@ -3,6 +3,8 @@ let cards = document.querySelectorAll('.card')
 let cardFront = document.querySelectorAll('.card-front')
 let cardBack = document.querySelectorAll('.card-back')
 let cardsSection = document.querySelector('.cards')
+let correctMatches = document.querySelector('.correctMatches')
+let matchesLeft = document.querySelector('.matchesLeft')
 
 //==========================================================================================================
 //==========================================================================================================
@@ -60,6 +62,7 @@ let matchArr = []
 //==========================================================================================================
 let matches = 0
 let gameWon = false 
+let matchesLeftAmount = 10
 
 cardBackMatchFunc = (e, i) => {
   console.log(`This is ${e}`)
@@ -68,6 +71,8 @@ cardBackMatchFunc = (e, i) => {
     value = 0
     matches++
     console.log(`The number of matches is ${matches}`)
+    correctMatches.innerText = `Correct Matches: ${matches}`
+    matchesLeft.innerText = `Matches Left: ${matchesLeftAmount - matches}`
     setTimeout(() => {
       // matchArr.map(card => {
       //   return card.classList.add('vis-hidden')
@@ -79,7 +84,7 @@ cardBackMatchFunc = (e, i) => {
     }, 3000)
     clearTimeout()
 
-    if (matches === 1) {
+    if (matches === 2) {
       gameWon = true
       // console.log(cardsSection.innerHTML) 
       setTimeout(() => {
