@@ -21,13 +21,6 @@ addValue = () => {
   console.log(value)
 }
 
-// Subtracts value
-// ** This code may not be necesarry since, you can only flip two cards and can't turn them around again until you have guessed two cards **
-subtractValue = () => {
-  value--
-  console.log(value)
-}
-
 // Example Function to show how to log i
 // functionFoo = (temp) => {
 //   console.log(temp)
@@ -102,18 +95,17 @@ cardBackMatchFunc = (e, i) => {
     
   } else {
     console.log(`Sorry not a match`)
-    cards[i].classList.remove('card-hover')
+    value = 0
+
+    setTimeout(() => {
+      matchArr[0].classList.remove('card-hover')
+      matchArr[1].classList.remove('card-hover')
+      matchArr.shift()
+      matchArr.shift()
+    }, 2000)
+    
   }
 }
-
-//==========================================================================================================
-//==========================================================================================================
-// GAME WON FUNCTION
-//==========================================================================================================
-//==========================================================================================================
-
-
-
 
 //==========================================================================================================
 //==========================================================================================================
@@ -138,7 +130,6 @@ cardHandler = (i) => {
           cardArr.push(i)
           console.log(`This is the card array: ${cardArr}`)
           // Pushes the text of the back of the card to the array
-          // cardBackFunc(i)
           matchArr.push(cards[i])
           console.log(`This is the match array: ${matchArr}`)
 
@@ -155,19 +146,9 @@ cardHandler = (i) => {
               console.log(cardArr)
               addValue()
               // Pushes the text of the back of the card to the array
-              // cardBackFunc(i)
               matchArr.push(cards[i])
               console.log(`This is the length of the match array: ${matchArr.length}`)
-              
-              // if (matchArr.length > 2) {
-              //   matchArr.length = 0
-              //   console.log(`This should be clearing the match array`)
-              // } 
-              //else {
-            //     matchArr.push(cards[i])
-            //   console.log(`This is the match array: ${matchArr}`)
-            //   }
-              
+
               // Sees if the cards are a match
               cardBackMatchFunc(i)
               cardArr = []
