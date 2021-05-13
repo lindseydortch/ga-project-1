@@ -53,10 +53,10 @@ showCards = (i) => {
 // Compares the content in the cards - or runs through the cardBack divs for their innerText, so they can be compared in the cardHandler Func
 //==========================================================================================================
 //==========================================================================================================
-cardBackFunc = (k) => {
-    console.log(`This is from the cardBackFunc: ${cardBack[k].innerText}`)
-    return cardBack[k].innerText
-} 
+// cardBackFunc = (k) => {
+//     console.log(`This is from the cardBackFunc: ${cardBack[k].innerText}`)
+//     return cardBack[k].innerText
+// } 
 
 // Empty array for the cardHandler Func to be able to push the index of the card that was selected
 let cardArr = []
@@ -73,17 +73,21 @@ cardBackMatchFunc = (e, i) => {
     console.log(`Yay you got a match`)
     value = 0
     setTimeout(() => {
-      matchArr.map(card => {
-        return card.classList.add('vis-hidden')
-      })
-      // matchArr[0].classList.add('vis-hidden')
-      // matchArr[1].classList.add('vis-hidden')
+      // matchArr.map(card => {
+      //   return card.classList.add('vis-hidden')
+      // })
+      matchArr[0].classList.add('vis-hidden')
+      matchArr[1].classList.add('vis-hidden')
+      matchArr.shift()
+      matchArr.shift()
     }, 3000)
     clearTimeout()
+    
   } else {
     console.log(`Sorry not a match`)
     cards[i].classList.remove('card-hover')
   }
+
 }
 
 //==========================================================================================================
@@ -109,15 +113,16 @@ cardHandler = (i, k) => {
           cardArr.push(i)
           console.log(`This is the card array: ${cardArr}`)
           // Pushes the text of the back of the card to the array
-          cardBackFunc(i)
+          // cardBackFunc(i)
           matchArr.push(cards[i])
           console.log(`This is the match array: ${matchArr}`)
 
         } else if (value === 1){
           
           for (let j = 0; j < cardArr.length; j++) {
-            if (cardArr[j] === i) {
+            if (cardArr[j] === cards[i]) {
               console.log(`You cannot hover this card because it has already been hovered or you just hovered it`)
+              cardArr = []
             } else {
               cards[i].classList.add('card-hover') 
               // Pushes the index of the card onto the array
@@ -125,11 +130,22 @@ cardHandler = (i, k) => {
               console.log(cardArr)
               addValue()
               // Pushes the text of the back of the card to the array
-              cardBackFunc(i)
+              // cardBackFunc(i)
               matchArr.push(cards[i])
-              console.log(`This is the match array: ${matchArr}`)
+              console.log(`This is the length of the match array: ${matchArr.length}`)
+              
+              // if (matchArr.length > 2) {
+              //   matchArr.length = 0
+              //   console.log(`This should be clearing the match array`)
+              // } 
+              //else {
+            //     matchArr.push(cards[i])
+            //   console.log(`This is the match array: ${matchArr}`)
+            //   }
+              
               // Sees if the cards are a match
               cardBackMatchFunc(i)
+              cardArr = []
             }
           }
         } else {
@@ -143,7 +159,7 @@ cardHandler = (i, k) => {
 // Event Listener for the cards
 //==========================================================================================================
 //==========================================================================================================
-for(let i = 0, k = 0; i < cards.length, k < cardBack.length; i++, k++) {
+for(let i = 0; i < cards.length; i++) {
   // showCards(i)
   // clearTimeout()
   cards[i].addEventListener('click', () => cardHandler(i))
