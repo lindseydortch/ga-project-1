@@ -2,6 +2,7 @@
 let cards = document.querySelectorAll('.card')
 let cardFront = document.querySelectorAll('.card-front')
 let cardBack = document.querySelectorAll('.card-back')
+let cardsSection = document.querySelector('.cards')
 
 //==========================================================================================================
 //==========================================================================================================
@@ -48,16 +49,6 @@ showCards = (i) => {
   }, 3000)
 }
 
-//==========================================================================================================
-//==========================================================================================================
-// Compares the content in the cards - or runs through the cardBack divs for their innerText, so they can be compared in the cardHandler Func
-//==========================================================================================================
-//==========================================================================================================
-// cardBackFunc = (k) => {
-//     console.log(`This is from the cardBackFunc: ${cardBack[k].innerText}`)
-//     return cardBack[k].innerText
-// } 
-
 // Empty array for the cardHandler Func to be able to push the index of the card that was selected
 let cardArr = []
 let matchArr = []
@@ -67,11 +58,16 @@ let matchArr = []
 // Match Function
 //==========================================================================================================
 //==========================================================================================================
+let matches = 0
+let gameWon = false 
+
 cardBackMatchFunc = (e, i) => {
   console.log(`This is ${e}`)
   if (matchArr[0].firstElementChild.children[1].innerText === matchArr[1].firstElementChild.children[1].innerText) {
     console.log(`Yay you got a match`)
     value = 0
+    matches++
+    console.log(`The number of matches is ${matches}`)
     setTimeout(() => {
       // matchArr.map(card => {
       //   return card.classList.add('vis-hidden')
@@ -82,13 +78,37 @@ cardBackMatchFunc = (e, i) => {
       matchArr.shift()
     }, 3000)
     clearTimeout()
+
+    if (matches === 1) {
+      gameWon = true
+      // console.log(cardsSection.innerHTML) 
+      setTimeout(() => {
+        cardsSection.innerHTML = ''
+      
+        let gameWonDiv = document.createElement('div')
+        let gameWonText = document.createElement('p')
+        gameWonText.innerText = `YAY 🎉 You've won the game!!`
+        gameWonDiv.append(gameWonText)
+        cardsSection.classList.remove('cards')
+        cardsSection.classList.add('gameWon')
+        cardsSection.append(gameWonDiv)
+      }, 3000)
+    }
     
   } else {
     console.log(`Sorry not a match`)
     cards[i].classList.remove('card-hover')
   }
-
 }
+
+//==========================================================================================================
+//==========================================================================================================
+// GAME WON FUNCTION
+//==========================================================================================================
+//==========================================================================================================
+
+
+
 
 //==========================================================================================================
 //==========================================================================================================
@@ -96,7 +116,7 @@ cardBackMatchFunc = (e, i) => {
 //==========================================================================================================
 //==========================================================================================================
 
-cardHandler = (i, k) => {
+cardHandler = (i) => {
   
       // Variable to tell the browser if a card is allowed to flip over 
       let cardHover = true 

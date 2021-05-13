@@ -10,7 +10,7 @@
   3. Add in Trivia question functionality 
     - Need to be able to see the back of the cards when the trivia question is answered correctly 
   ✅ Need to be able to see the back of the cards when the game is first loaded 
-  5. Let the player know when they have won the game 
+  ✅ Let the player know when they have won the game 
   6. Let the player know how many matches they have gotten correct and how many matches they have left
   7. Bring in styling and Rick and Morty API
   
