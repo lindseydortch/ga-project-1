@@ -333,7 +333,8 @@ for(let i = 0; i < cards.length; i++) {
   //showCards(i)
   // clearTimeout()
   card = cards[i]
-  card.addEventListener('click', () => cardHandler(i))
+  //card.addEventListener('click', () => cardHandler(i))
+  card.classList.add('card-hover')
   // triviaForm.addEventListener('submit', checkThis)
   //shuffleCards()
 

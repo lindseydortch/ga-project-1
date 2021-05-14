@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Get-Schwifty";
+  src: url(../fonts/get_schwifty.ttf);
+}
+
 /* ==================================================================================
 // BASE
 ==================================================================================*/
@@ -16,6 +21,11 @@ html {
 body {
   box-sizing: border-box;
   position: relative;
+  background-image: linear-gradient(to right bottom, #01e2f9, #01b4c6, #01e2f9);
+  /* background-color: rgb(1, 180, 198); */
+  background-repeat: no-repeat;
+  font-family: "Get-Schwifty";
+  color: #fb6467;
 }
 
 /*==================================================================================
@@ -108,7 +118,9 @@ h1 {
 }
 
 .card-front {
-  background-color: brown;
+  background-image: linear-gradient(to right bottom, rgb(163, 211, 96), rgba(151, 206, 76));
+  /* background-color: rgb(151, 206, 76); */
+  
   color: white;
 }
 
@@ -117,6 +129,14 @@ h1 {
   background-color:brown;
   color: white;
   transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.card-back__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 #triviaPopup,
