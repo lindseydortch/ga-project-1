@@ -28,6 +28,60 @@ addValue = () => {
 
 //==========================================================================================================
 //==========================================================================================================
+// SHUFFLE THE CARDS
+// FISCHER - YATES ALGO
+//==========================================================================================================
+//==========================================================================================================
+let btnShuffle = document.querySelector('.btnShuffle')
+// let arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+let deckOfCards = Array.from(cards)
+console.log(deckOfCards)
+
+shuffleCards = () => {
+  // console.log('shuffle')
+  // Need to remove inner.HTML 
+  cardsSection.innerHTML = ''
+  console.log(deckOfCards)
+  
+  // FISCHER - YATES METHOD 
+  let newPos
+  let temp
+
+  for (let l = deckOfCards.length - 1; l > 0; l--) {
+    newPos = Math.floor(Math.random() * (l + 1))
+    temp = deckOfCards[l]
+    deckOfCards[l] = deckOfCards[newPos]
+    deckOfCards[newPos] = temp
+  }
+
+  console.log(deckOfCards)
+
+  // END OF FISCHER-YATES METHOD
+
+  // appends the rest of the shuffled cards back into the game 
+  deckOfCards.forEach((node) => {
+    cardsSection.appendChild(node)
+  })
+  console.log(cardsSection)
+
+}
+
+//cardSection.appendChild.forEach((unshuffled) => shuffled.classList.appendChild().shuffleCards())
+shuffleCards()
+
+//console.log(unshuffled)
+
+// let newArray = shuffleCards(arry)
+// console.log(newArray)
+
+btnShuffle.addEventListener('click', () => shuffleCards(arry))
+
+
+//addShuffleToCards(i)
+
+//==========================================================================================================
+//==========================================================================================================
 // SHOW CARDS FUNCTIONALITY 
 // This will show the cards at the beginning of the page load 
 // Logged in where the cards are looped through
@@ -57,8 +111,7 @@ let matches = 0
 let gameWon = false 
 let matchesLeftAmount = 10
 
-cardBackMatchFunc = (e, i) => {
-  console.log(`This is ${e}`)
+cardBackMatchFunc = () => {
   if (matchArr[0].firstElementChild.children[1].innerText === matchArr[1].firstElementChild.children[1].innerText) {
     console.log(`Yay you got a match`)
     value = 0
@@ -158,6 +211,7 @@ cardHandler = (i) => {
           console.log(`You can only hover two cards at a time`)
         }
       }  
+
   }
 
 
@@ -224,9 +278,11 @@ wrongAnswerFunc = () => {
   }, 2000)
 }
 
-checkAnswer = (e) => {
+checkAnswer = (e, i) => {
+  //console.log(this)
   //console.log(accessQuestion)
   // console.log('Checking')
+  // console.log(i)
   e.preventDefault()
   // console.log(answer1.checked)
   console.log('SUBMITTED')
@@ -240,7 +296,7 @@ checkAnswer = (e) => {
       console.log('you got it right')
 
       closeModal()
-      //showCards([i])
+      //showCards(i)
     }
   } else if (answer2.checked == true){
     //console.log('This is not the correct answer')
@@ -248,14 +304,24 @@ checkAnswer = (e) => {
     if (accessQuestion == answer2.name) {
       console.log('you got it right')
       closeModal()
-      //showCards([i])
+      //showCards(i)
     }
   } else {
     console.log('You didnt make a selection')
   }
 }
 
-triviaForm.addEventListener('submit', checkAnswer)
+// checkAnswer()
+
+checkThis = (e) => {
+  //e.preventDefault()
+  console.log(this)
+  //console.log(showCards(i))
+}
+
+checkThis()
+
+triviaForm.addEventListener('click', checkThis)
 
 
 //==========================================================================================================
@@ -266,5 +332,9 @@ triviaForm.addEventListener('submit', checkAnswer)
 for(let i = 0; i < cards.length; i++) {
   //showCards(i)
   // clearTimeout()
-  cards[i].addEventListener('click', () => cardHandler(i))
+  card = cards[i]
+  card.addEventListener('click', () => cardHandler(i))
+  // triviaForm.addEventListener('submit', checkThis)
+  //shuffleCards()
+
 }
