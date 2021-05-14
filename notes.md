@@ -4,10 +4,13 @@
  ✅ GO BACK AND FIX BUG WHERE YOU CAN SELECT MORE THAN ONE CARD AT A TIME 
   ✅ Current issue: you can select the same card twice 
 
+  BUGS 
+  1. Can't get showCards func to work in submit of trivia form
+
   MVP WORK
   ✅ Need to be able to see if the content on the card matches
   2. Random array is added to the cards 
-  3. Add in Trivia question functionality 
+  ✅ Add in Trivia question functionality 
     - Need to be able to see the back of the cards when the trivia question is answered correctly 
   ✅ Need to be able to see the back of the cards when the game is first loaded 
   ✅ Let the player know when they have won the game 

@@ -160,16 +160,7 @@ cardHandler = (i) => {
       }  
   }
 
-//==========================================================================================================
-//==========================================================================================================
-// Event Listener for the cards
-//==========================================================================================================
-//==========================================================================================================
-for(let i = 0; i < cards.length; i++) {
-  // showCards(i)
-  // clearTimeout()
-  cards[i].addEventListener('click', () => cardHandler(i))
-}
+
 
 //==========================================================================================================
 //==========================================================================================================
@@ -203,7 +194,7 @@ let triviaForm = document.querySelector('.trivia')
 let answer1 = document.querySelector('#a1')
 let answer2 = document.querySelector('#a2')
 let submitAnswer = document.querySelector('.submit')
-let answers = document.querySelectorAll('input')
+let question = document.querySelector('.question')
 
 // console.log(answer1)
 // console.log(answer2.name)
@@ -212,11 +203,26 @@ let answers = document.querySelectorAll('input')
 let triviaQuestions = [
   {
     question: 'Is Monitor Lord still alive?',
-    correctAnswer: 'false',
+    correctAnswer: 'true',
   }
 ]
 
 let accessQuestion = triviaQuestions[0].correctAnswer
+
+wrongAnswerFunc = () => {
+  // Take the form and make it blank
+  triviaForm.innerHTML = ''
+  triviaForm.removeAttribute('form')
+  let triviaPopDiv = document.createElement('div')
+  triviaPopDiv.classList.add('test')
+  let triviaFormWrongText = document.createElement('p')
+  triviaFormWrongText.innerText = 'You got the wrong answer'
+  triviaPopup.append(triviaPopDiv)
+  triviaPopDiv.append(triviaFormWrongText)
+  setTimeout(() => {
+    closeModal()
+  }, 2000)
+}
 
 checkAnswer = (e) => {
   //console.log(accessQuestion)
@@ -226,20 +232,39 @@ checkAnswer = (e) => {
   console.log('SUBMITTED')
   if (answer1.checked == true) {
     //console.log('answer has been checked')
-    console.log('This is not the correct answer')
+    //console.log('This is not the correct answer')
+
+    wrongAnswerFunc()
+    
     if (accessQuestion == answer1.name) {
       console.log('you got it right')
+
+      closeModal()
+      //showCards([i])
     }
   } else if (answer2.checked == true){
-    console.log('This is not the correct answer')
+    //console.log('This is not the correct answer')
+    wrongAnswerFunc()
     if (accessQuestion == answer2.name) {
       console.log('you got it right')
+      closeModal()
+      //showCards([i])
     }
   } else {
     console.log('You didnt make a selection')
   }
 }
 
-
 triviaForm.addEventListener('submit', checkAnswer)
 
+
+//==========================================================================================================
+//==========================================================================================================
+// Event Listener for the cards
+//==========================================================================================================
+//==========================================================================================================
+for(let i = 0; i < cards.length; i++) {
+  //showCards(i)
+  // clearTimeout()
+  cards[i].addEventListener('click', () => cardHandler(i))
+}
