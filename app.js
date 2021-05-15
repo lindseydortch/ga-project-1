@@ -159,7 +159,7 @@ cardBackMatchFunc = () => {
     }, 3000)
     clearTimeout()
 
-    if (matches === 1) {
+    if (matches === 10) {
       gameWon = true
       // // console.log(cardsSection.innerHTML) 
       // setTimeout(() => {
