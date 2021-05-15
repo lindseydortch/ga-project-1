@@ -33,3 +33,4 @@
   3. Style Winning CSS popup 
   4. Be able to start a new game from winning popup 
   5. If you try to exit out of the popup then it automatically starts a new game for you if you win
+  6. Markdown for readme 

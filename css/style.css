@@ -58,6 +58,7 @@ body {
   transform: translate(-50%, -50%);
   border-radius: .5rem;
   overflow: hidden;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, .3);
 }
 
 .winPictureImage {
@@ -72,6 +73,7 @@ body {
   grid-template-rows: repeat(4, 15rem);
   align-content: center;
   justify-content: center;
+  
 }
 
 /* .card {
@@ -219,6 +221,7 @@ h1 {
   padding: 1rem 2rem;
   text-align: center;
   color: rgba(250, 253, 124, 1) ;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, .3);
 }
 
 .matchesLeft {
@@ -239,6 +242,7 @@ h1 {
   font-size: 1.8rem;
   cursor: pointer;
   backface-visibility: hidden;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, .3);
 }
 
 .btn:hover, 
@@ -247,6 +251,7 @@ h1 {
   background-image: none;
   background-color: transparent;
   /* padding: 0; */
+  box-shadow: 0 1rem 4rem rgba(0, 0, 0, .3);
 }
 
 /* ==================================================================================
