@@ -1,1 +1,2 @@
-# ga-project-1
+# Rick and Morty Memory Game
+
