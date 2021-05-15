@@ -29,7 +29,7 @@
 
   Last Minute Touches
    ✅ Get hint button working 
-  2. Get reset game button working 
+  ✅ Get reset game button working 
   3. Style Winning CSS popup 
   4. Be able to start a new game from winning popup 
   5. If you try to exit out of the popup then it automatically starts a new game for you if you win

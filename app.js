@@ -63,9 +63,12 @@ shuffleCards = () => {
   // appends the rest of the shuffled cards back into the game 
   deckOfCards.forEach((node) => {
     cardsContainer.appendChild(node)
+    node.classList.remove('vis-hidden')
+    node.classList.remove('card-hover')
   })
   console.log(cardsSection)
-
+  correctMatches.innerText = `Correct Matches: 0`
+  matchesLeft.innerText = `Matches Left: 10`
 }
 
 //cardSection.appendChild.forEach((unshuffled) => shuffled.classList.appendChild().shuffleCards())
@@ -351,7 +354,7 @@ cardHandler = (i) => {
 //==========================================================================================================
 //==========================================================================================================
 for(let i = 0; i < cards.length; i++) {
-  //showCards(i)
+  showCards(i)
   clearTimeout()
   card = cards[i]
   card.addEventListener('click', () => cardHandler(i))
