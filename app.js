@@ -27,7 +27,7 @@ let value = 0
 // Adds value
 addValue = () => {
   value++
-  console.log(value)
+  // console.log(value)
 }
 
 // Example Function to show how to log i
@@ -78,7 +78,7 @@ shuffleCards = () => {
   // console.log('shuffle')
   // Need to remove inner.HTML 
   cardsContainer.innerHTML = ``
-  console.log(deckOfCards)
+  // console.log(deckOfCards)
   
   // FISCHER - YATES METHOD 
   let newPos
@@ -91,7 +91,7 @@ shuffleCards = () => {
     deckOfCards[newPos] = temp
   }
 
-  console.log(deckOfCards)
+  // console.log(deckOfCards)
 
   // END OF FISCHER-YATES METHOD
 
@@ -102,7 +102,7 @@ shuffleCards = () => {
     node.classList.remove('card-hover')
     showCardsNode(node)
   })
-  console.log(cardsSection)
+  // console.log(cardsSection)
   correctMatches.innerText = `Correct Matches: 0`
   matchesLeft.innerText = `Matches Left: 10`
   gameWonPopup.classList.add('none')
@@ -142,10 +142,10 @@ let matchArr = []
 
 cardBackMatchFunc = () => {
   if (matchArr[0].firstElementChild.children[1].innerHTML === matchArr[1].firstElementChild.children[1].innerHTML) {
-    console.log(`Yay you got a match`)
+    // console.log(`Yay you got a match`)
     value = 0
     matches++
-    console.log(`The number of matches is ${matches}`)
+    // console.log(`The number of matches is ${matches}`)
     correctMatches.innerText = `Correct Matches: ${matches}`
     matchesLeft.innerText = `Matches Left: ${matchesLeftAmount - matches}`
     setTimeout(() => {
@@ -181,7 +181,7 @@ cardBackMatchFunc = () => {
     }
     
   } else {
-    console.log(`Sorry not a match`)
+    // console.log(`Sorry not a match`)
     value = 0
 
     setTimeout(() => {
@@ -235,35 +235,33 @@ cardHandler = (i) => {
           // console.log(cards[i])
           // Pushes the index of the card onto the array
           cardArr.push(i)
-          console.log(`This is the card array: ${cardArr}`)
+          // console.log(`This is the card array: ${cardArr}`)
           // Pushes the text of the back of the card to the array
           matchArr.push(cards[i])
-          console.log(`This is the match array: ${matchArr}`)
+          // console.log(`This is the match array: ${matchArr}`)
 
         } else if (value === 1){
           
           for (let j = 0; j < cardArr.length; j++) {
             if (cardArr[j] === cards[i]) {
-              console.log(`You cannot hover this card because it has already been hovered or you just hovered it`)
+              // console.log(`You cannot hover this card because it has already been hovered or you just hovered it`)
               cardArr = []
             } else {
               cards[i].classList.add('card-hover') 
               // Pushes the index of the card onto the array
               cardArr.push(i)
-              console.log(cardArr)
+              // console.log(cardArr)
               addValue()
               // Pushes the text of the back of the card to the array
               matchArr.push(cards[i])
-              console.log(`This is the length of the match array: ${matchArr.length}`)
+              // console.log(`This is the length of the match array: ${matchArr.length}`)
 
               // Sees if the cards are a match
               cardBackMatchFunc(i)
               cardArr = []
             }
           }
-        } else {
-          console.log(`You can only hover two cards at a time`)
-        }
+        } 
       }  
 
   }
