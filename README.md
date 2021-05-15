@@ -2,6 +2,8 @@
 
 The Rick and Morty Memory game is for the Mortiest of Morty's Rick and Morty Fan. Test your memory by trying to remember the placement of all of the pictures as they flash on the screen. Good luck! 
 
+![Outline of the design](img/rm-winner-background.jpg)
+
 ## Technology Used 
 - HTML
 - CSS 
