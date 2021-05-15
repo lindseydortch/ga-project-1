@@ -26,3 +26,10 @@
     - This will be associated with how many cards and time 
   4. If the user gets three trivia questions correct they get a match
   5. Be able to reset game or start a new game when they have won
+
+  Last Minute Touches
+  1. Get hint button working 
+  2. Get reset game button working 
+  3. Style Winning CSS popup 
+  4. Be able to start a new game from winning popup 
+  5. If you try to exit out of the popup then it automatically starts a new game for you if you win

@@ -2,6 +2,7 @@
 let cards = document.querySelectorAll('.card')
 let cardFront = document.querySelectorAll('.card-front')
 let cardBack = document.querySelectorAll('.card-back')
+let cardsContainer = document.querySelector('.cards-container')
 let cardsSection = document.querySelector('.cards')
 let correctMatches = document.querySelector('.correctMatches')
 let matchesLeft = document.querySelector('.matchesLeft')
@@ -41,7 +42,7 @@ console.log(deckOfCards)
 shuffleCards = () => {
   // console.log('shuffle')
   // Need to remove inner.HTML 
-  cardsSection.innerHTML = ''
+  cardsContainer.innerHTML = ``
   console.log(deckOfCards)
   
   // FISCHER - YATES METHOD 
@@ -61,7 +62,7 @@ shuffleCards = () => {
 
   // appends the rest of the shuffled cards back into the game 
   deckOfCards.forEach((node) => {
-    cardsSection.appendChild(node)
+    cardsContainer.appendChild(node)
   })
   console.log(cardsSection)
 
@@ -75,7 +76,7 @@ shuffleCards()
 // let newArray = shuffleCards(arry)
 // console.log(newArray)
 
-btnShuffle.addEventListener('click', () => shuffleCards(arry))
+btnShuffle.addEventListener('click', shuffleCards)
 
 
 //addShuffleToCards(i)
@@ -112,7 +113,7 @@ let gameWon = false
 let matchesLeftAmount = 10
 
 cardBackMatchFunc = () => {
-  if (matchArr[0].firstElementChild.children[1].innerText === matchArr[1].firstElementChild.children[1].innerText) {
+  if (matchArr[0].firstElementChild.children[1].innerHTML === matchArr[1].firstElementChild.children[1].innerHTML) {
     console.log(`Yay you got a match`)
     value = 0
     matches++
@@ -235,9 +236,9 @@ closeModal = (e) => {
   triviaPopup.classList.add('none')
 }
 
-closePopupBtn.addEventListener('click', closeModal)
+//closePopupBtn.addEventListener('click', closeModal)
 
-btnHint.addEventListener('click', openModal)
+//btnHint.addEventListener('click', openModal)
 
 //==========================================================================================================
 //==========================================================================================================
@@ -321,7 +322,7 @@ checkThis = (e) => {
 
 checkThis()
 
-triviaForm.addEventListener('click', checkThis)
+//triviaForm.addEventListener('click', checkThis)
 
 
 //==========================================================================================================
@@ -330,12 +331,11 @@ triviaForm.addEventListener('click', checkThis)
 //==========================================================================================================
 //==========================================================================================================
 for(let i = 0; i < cards.length; i++) {
-  //showCards(i)
-  // clearTimeout()
+  showCards(i)
+  clearTimeout()
   card = cards[i]
-  //card.addEventListener('click', () => cardHandler(i))
-  card.classList.add('card-hover')
+  card.addEventListener('click', () => cardHandler(i))
+  //card.classList.add('card-hover')
   // triviaForm.addEventListener('submit', checkThis)
   //shuffleCards()
-
 }
