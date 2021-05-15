@@ -6,7 +6,15 @@ let cardsContainer = document.querySelector('.cards-container')
 let cardsSection = document.querySelector('.cards')
 let correctMatches = document.querySelector('.correctMatches')
 let matchesLeft = document.querySelector('.matchesLeft')
+let gameWonPopup = document.querySelector('#gameWonPopup')
+let videoForPopup = document.querySelector('.videoForPopup')
+let closePopupBtn = document.querySelector('#closePopup')
+let btnNewGame = document.querySelector('.btnNewGame')
+let btnHint = document.querySelector('.btnHint')
 
+let matches = 0
+let gameWon = false 
+let matchesLeftAmount = 10
 //==========================================================================================================
 //==========================================================================================================
 // VALUE CODE
@@ -29,7 +37,34 @@ addValue = () => {
 
 //==========================================================================================================
 //==========================================================================================================
-// SHUFFLE THE CARDS
+// SHOW CARDS FUNCTIONALITY 
+// This will show the cards at the beginning of the page load 
+// Logged in where the cards are looped through
+//==========================================================================================================
+//==========================================================================================================
+
+showCards = (i) => {
+  
+  setTimeout(() => {
+    cards[i].classList.add('card-hover')
+    setTimeout(() => {
+      cards[i].classList.remove('card-hover')
+    }, 3000)
+  }, 1000)
+}
+
+showCardsNode = (node) => {
+  setTimeout(() => {
+    node.classList.add('card-hover')
+    setTimeout(() => {
+      node.classList.remove('card-hover')
+    }, 3000)
+  }, 1000)
+}
+
+//==========================================================================================================
+//==========================================================================================================
+// SHUFFLE THE CARDS and resets the game
 // FISCHER - YATES ALGO
 //==========================================================================================================
 //==========================================================================================================
@@ -65,10 +100,18 @@ shuffleCards = () => {
     cardsContainer.appendChild(node)
     node.classList.remove('vis-hidden')
     node.classList.remove('card-hover')
+    showCardsNode(node)
   })
   console.log(cardsSection)
   correctMatches.innerText = `Correct Matches: 0`
   matchesLeft.innerText = `Matches Left: 10`
+  gameWonPopup.classList.add('none')
+  videoForPopup.removeAttribute('allow', 'autoplay')
+  videoForPopup.src = ''
+  matches = 0
+  matchesLeftAmount = 10
+  btnHint.classList.remove('disable-pointer')  
+  btnHint.innerText = 'Hint'
 }
 
 //cardSection.appendChild.forEach((unshuffled) => shuffled.classList.appendChild().shuffleCards())
@@ -84,23 +127,7 @@ btnShuffle.addEventListener('click', shuffleCards)
 
 //addShuffleToCards(i)
 
-//==========================================================================================================
-//==========================================================================================================
-// SHOW CARDS FUNCTIONALITY 
-// This will show the cards at the beginning of the page load 
-// Logged in where the cards are looped through
-//==========================================================================================================
-//==========================================================================================================
 
-showCards = (i) => {
-  
-  setTimeout(() => {
-    cards[i].classList.add('card-hover')
-    setTimeout(() => {
-      cards[i].classList.remove('card-hover')
-    }, 5000)
-  }, 3000)
-}
 
 // Empty array for the cardHandler Func to be able to push the index of the card that was selected
 let cardArr = []
@@ -111,9 +138,7 @@ let matchArr = []
 // Match Function
 //==========================================================================================================
 //==========================================================================================================
-let matches = 0
-let gameWon = false 
-let matchesLeftAmount = 10
+
 
 cardBackMatchFunc = () => {
   if (matchArr[0].firstElementChild.children[1].innerHTML === matchArr[1].firstElementChild.children[1].innerHTML) {
@@ -134,20 +159,25 @@ cardBackMatchFunc = () => {
     }, 3000)
     clearTimeout()
 
-    if (matches === 2) {
+    if (matches === 1) {
       gameWon = true
-      // console.log(cardsSection.innerHTML) 
-      setTimeout(() => {
-        cardsSection.innerHTML = ''
+      // // console.log(cardsSection.innerHTML) 
+      // setTimeout(() => {
+      //   cardsSection.innerHTML = ''
       
-        let gameWonDiv = document.createElement('div')
-        let gameWonText = document.createElement('p')
-        gameWonText.innerText = `YAY 🎉 You've won the game!!`
-        gameWonDiv.append(gameWonText)
-        cardsSection.classList.remove('cards')
-        cardsSection.classList.add('gameWon')
-        cardsSection.append(gameWonDiv)
-      }, 3000)
+      //   let gameWonDiv = document.createElement('div')
+      //   let gameWonText = document.createElement('p')
+      //   gameWonText.innerText = `YAY 🎉 You've won the game!!`
+      //   gameWonDiv.append(gameWonText)
+      //   cardsSection.classList.remove('cards')
+      //   cardsSection.classList.add('gameWon')
+      //   cardsSection.append(gameWonDiv)
+      // }, 3000)
+      setTimeout(() => {
+        gameWonPopup.classList.remove('none')
+        videoForPopup.setAttribute('allow', 'autoplay')
+        videoForPopup.src = 'https://www.youtube.com/embed/I1188GO4p1E?autoplay=1'
+      }, 5000)
     }
     
   } else {
@@ -169,7 +199,7 @@ cardBackMatchFunc = () => {
 // Hint Function
 //==========================================================================================================
 //==========================================================================================================
-let btnHint = document.querySelector('.btnHint')
+
 
 let hintsLeft = 1
 
@@ -238,11 +268,23 @@ cardHandler = (i) => {
 
   }
 
+//==========================================================================================================
+//==========================================================================================================
+// Popup Functionality - GAME WON
+//==========================================================================================================
+//==========================================================================================================
 
+// let gameWonPopup = document.querySelector('#gameWonPopup')
+// let videoForPopup = document.querySelector('.videoForPopup')
+// let closePopupBtn = document.querySelector('#closePopup')
+// let btnNewGame = document.querySelector('.btnNewGame')
+
+closePopupBtn.addEventListener('click', shuffleCards)
+btnNewGame.addEventListener('click', shuffleCards)
 
 //==========================================================================================================
 //==========================================================================================================
-// Popup Functionality 
+// Popup Functionality - Trivia
 //==========================================================================================================
 //==========================================================================================================
 // let triviaPopup = document.querySelector('#triviaPopup')

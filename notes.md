@@ -30,8 +30,8 @@
   Last Minute Touches
    ✅ Get hint button working 
   ✅ Get reset game button working 
-  3. Style Winning CSS popup 
-  4. Be able to start a new game from winning popup 
-  5. If you try to exit out of the popup then it automatically starts a new game for you if you win
+  ✅ Style Winning CSS popup 
+  ✅ Be able to start a new game from winning popup 
+  ✅ If you try to exit out of the popup then it automatically starts a new game for you if you win
   6. Markdown for readme 
   7. Make it responsive
