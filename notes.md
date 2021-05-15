@@ -9,13 +9,13 @@
 
   MVP WORK
   ✅ Need to be able to see if the content on the card matches
-  2. Random array is added to the cards 
+  ✅ Random array is added to the cards 
   ✅ Add in Trivia question functionality 
     - Need to be able to see the back of the cards when the trivia question is answered correctly 
   ✅ Need to be able to see the back of the cards when the game is first loaded 
   ✅ Let the player know when they have won the game 
   ✅ Let the player know how many matches they have gotten correct and how many matches they have left
-  7. Bring in styling and Rick and Morty API
+  ✅ Bring in styling and ❌ Rick and Morty API ❌
   
   STRETCH GOALS 
   1. Allow players to select the amount of cards they want to be able to play with 
@@ -28,9 +28,10 @@
   5. Be able to reset game or start a new game when they have won
 
   Last Minute Touches
-  1. Get hint button working 
+   ✅ Get hint button working 
   2. Get reset game button working 
   3. Style Winning CSS popup 
   4. Be able to start a new game from winning popup 
   5. If you try to exit out of the popup then it automatically starts a new game for you if you win
   6. Markdown for readme 
+  7. Make it responsive

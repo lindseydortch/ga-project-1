@@ -163,6 +163,26 @@ cardBackMatchFunc = () => {
 
 //==========================================================================================================
 //==========================================================================================================
+// Hint Function
+//==========================================================================================================
+//==========================================================================================================
+let btnHint = document.querySelector('.btnHint')
+
+let hintsLeft = 1
+
+hintFunc = (i) => {
+    cards[i].classList.add('card-hover')
+    setTimeout(() => {
+      cards[i].classList.remove('card-hover')
+    }, 3000)
+    hintsLeft--
+    clearTimeout()
+    btnHint.classList.add('disable-pointer')  
+    btnHint.innerText = 'No Hints Left'
+}
+
+//==========================================================================================================
+//==========================================================================================================
 // The function that goes on the event listener for the cards
 //==========================================================================================================
 //==========================================================================================================
@@ -222,19 +242,19 @@ cardHandler = (i) => {
 // Popup Functionality 
 //==========================================================================================================
 //==========================================================================================================
-let triviaPopup = document.querySelector('#triviaPopup')
-let closePopupBtn = document.querySelector('#close')
-let btnHint = document.querySelector('.btnHint')
+// let triviaPopup = document.querySelector('#triviaPopup')
+// let closePopupBtn = document.querySelector('#close')
+// let btnHint = document.querySelector('.btnHint')
 
 
-// Adds or removes the class list of .none 
-openModal = (e) => {
-  triviaPopup.classList.remove('none')
-}
+// // Adds or removes the class list of .none 
+// openModal = (e) => {
+//   triviaPopup.classList.remove('none')
+// }
 
-closeModal = (e) => {
-  triviaPopup.classList.add('none')
-}
+// closeModal = (e) => {
+//   triviaPopup.classList.add('none')
+// }
 
 //closePopupBtn.addEventListener('click', closeModal)
 
@@ -245,82 +265,82 @@ closeModal = (e) => {
 // TRIVIA PORTION
 //==========================================================================================================
 //==========================================================================================================
-let triviaForm = document.querySelector('.trivia')
-let answer1 = document.querySelector('#a1')
-let answer2 = document.querySelector('#a2')
-let submitAnswer = document.querySelector('.submit')
-let question = document.querySelector('.question')
+// let triviaForm = document.querySelector('.trivia')
+// let answer1 = document.querySelector('#a1')
+// let answer2 = document.querySelector('#a2')
+// let submitAnswer = document.querySelector('.submit')
+// let question = document.querySelector('.question')
 
-// console.log(answer1)
-// console.log(answer2.name)
-//console.log(answer1.checked)
+// // console.log(answer1)
+// // console.log(answer2.name)
+// //console.log(answer1.checked)
 
-let triviaQuestions = [
-  {
-    question: 'Is Monitor Lord still alive?',
-    correctAnswer: 'true',
-  }
-]
+// let triviaQuestions = [
+//   {
+//     question: 'Is Monitor Lord still alive?',
+//     correctAnswer: 'true',
+//   }
+// ]
 
-let accessQuestion = triviaQuestions[0].correctAnswer
+// let accessQuestion = triviaQuestions[0].correctAnswer
 
-wrongAnswerFunc = () => {
-  // Take the form and make it blank
-  triviaForm.innerHTML = ''
-  triviaForm.removeAttribute('form')
-  let triviaPopDiv = document.createElement('div')
-  triviaPopDiv.classList.add('test')
-  let triviaFormWrongText = document.createElement('p')
-  triviaFormWrongText.innerText = 'You got the wrong answer'
-  triviaPopup.append(triviaPopDiv)
-  triviaPopDiv.append(triviaFormWrongText)
-  setTimeout(() => {
-    closeModal()
-  }, 2000)
-}
+// wrongAnswerFunc = () => {
+//   // Take the form and make it blank
+//   triviaForm.innerHTML = ''
+//   triviaForm.removeAttribute('form')
+//   let triviaPopDiv = document.createElement('div')
+//   triviaPopDiv.classList.add('test')
+//   let triviaFormWrongText = document.createElement('p')
+//   triviaFormWrongText.innerText = 'You got the wrong answer'
+//   triviaPopup.append(triviaPopDiv)
+//   triviaPopDiv.append(triviaFormWrongText)
+//   setTimeout(() => {
+//     closeModal()
+//   }, 2000)
+// }
 
-checkAnswer = (e, i) => {
-  //console.log(this)
-  //console.log(accessQuestion)
-  // console.log('Checking')
-  // console.log(i)
-  e.preventDefault()
-  // console.log(answer1.checked)
-  console.log('SUBMITTED')
-  if (answer1.checked == true) {
-    //console.log('answer has been checked')
-    //console.log('This is not the correct answer')
+// checkAnswer = (e, i) => {
+//   //console.log(this)
+//   //console.log(accessQuestion)
+//   // console.log('Checking')
+//   // console.log(i)
+//   e.preventDefault()
+//   // console.log(answer1.checked)
+//   console.log('SUBMITTED')
+//   if (answer1.checked == true) {
+//     //console.log('answer has been checked')
+//     //console.log('This is not the correct answer')
 
-    wrongAnswerFunc()
+//     wrongAnswerFunc()
     
-    if (accessQuestion == answer1.name) {
-      console.log('you got it right')
+//     if (accessQuestion == answer1.name) {
+//       console.log('you got it right')
 
-      closeModal()
-      //showCards(i)
-    }
-  } else if (answer2.checked == true){
-    //console.log('This is not the correct answer')
-    wrongAnswerFunc()
-    if (accessQuestion == answer2.name) {
-      console.log('you got it right')
-      closeModal()
-      //showCards(i)
-    }
-  } else {
-    console.log('You didnt make a selection')
-  }
-}
+//       closeModal()
+//       //showCards(i)
+//     }
+//   } else if (answer2.checked == true){
+//     //console.log('This is not the correct answer')
+//     wrongAnswerFunc()
+//     if (accessQuestion == answer2.name) {
+//       console.log('you got it right')
+//       closeModal()
+//       //showCards(i)
+//     }
+//   } else {
+//     console.log('You didnt make a selection')
+//   }
+// }
 
-// checkAnswer()
+// // checkAnswer()
 
-checkThis = (e) => {
-  //e.preventDefault()
-  console.log(this)
-  //console.log(showCards(i))
-}
+// checkThis = (e) => {
+//   //e.preventDefault()
+//   console.log(this)
+//   //console.log(showCards(i))
+// }
 
-checkThis()
+// checkThis()
 
 //triviaForm.addEventListener('click', checkThis)
 
@@ -331,11 +351,14 @@ checkThis()
 //==========================================================================================================
 //==========================================================================================================
 for(let i = 0; i < cards.length; i++) {
-  showCards(i)
+  //showCards(i)
   clearTimeout()
   card = cards[i]
   card.addEventListener('click', () => cardHandler(i))
   //card.classList.add('card-hover')
   // triviaForm.addEventListener('submit', checkThis)
   //shuffleCards()
+    btnHint.addEventListener('click', () => hintFunc(i))
+
+ 
 }
